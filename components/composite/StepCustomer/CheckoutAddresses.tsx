@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next"
 import styled from "styled-components"
 
 import { ShippingToggleProps } from "components/composite/StepCustomer"
-import { ButtonCss, ButtonWrapper } from "components/ui/Button"
+import { Button, ButtonCss, ButtonWrapper } from "components/ui/Button"
 import { SpinnerIcon } from "components/ui/SpinnerIcon"
 import { Toggle } from "components/ui/Toggle"
 
@@ -48,7 +48,8 @@ export const CheckoutAddresses: React.FC<Props> = ({
   handleSave,
 }: Props) => {
   const { t } = useTranslation()
-
+  const [autoCompleteAddress, setAutoCompleteAddress] =
+    useState<NullableType<Address>>()
   const [shippingAddressFill, setShippingAddressFill] =
     useState<NullableType<Address>>(shippingAddress)
 
@@ -65,6 +66,21 @@ export const CheckoutAddresses: React.FC<Props> = ({
     }
   }, [shipToDifferentAddress])
 
+  const setManualAddress = () => {
+    console.log("setManualAddress")
+    setAutoCompleteAddress({
+      first_name: "Matteo",
+      last_name: "Alessani",
+      line_1: "Via Roma 1",
+      city: "Montelupo F.no",
+      state_code: "FI",
+      country_code: "IT",
+      zip_code: "50056",
+      phone: "123123123",
+      billing_info: "LSSMTT77h33c213D",
+    } as Address)
+  }
+
   return (
     <Fragment>
       <AddressSectionEmail
@@ -72,6 +88,7 @@ export const CheckoutAddresses: React.FC<Props> = ({
         setCustomerEmail={setCustomerEmail}
       />
       <AddressesContainer shipToDifferentAddress={shipToDifferentAddress}>
+        <Button onClick={setManualAddress}>Set</Button>
         <div className="mt-4">
           <AddressSectionTitle>
             <>{t(`addressForm.billing_address_title`)}</>
@@ -80,7 +97,12 @@ export const CheckoutAddresses: React.FC<Props> = ({
         <BillingAddressForm autoComplete="on" errorClassName="hasError">
           <div className="mt-4">
             <BillingAddressFormNew
-              billingAddress={billingAddress}
+              billingAddress={
+                autoCompleteAddress != null &&
+                Object.keys(autoCompleteAddress).length > 0
+                  ? autoCompleteAddress
+                  : billingAddress
+              }
               openShippingAddress={openShippingAddress}
             />
           </div>
