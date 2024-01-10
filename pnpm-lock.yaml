@@ -13,8 +13,8 @@ overrides:
 
 dependencies:
   '@commercelayer/react-components':
-    specifier: ^4.8.6-beta.0
-    version: 4.8.6-beta.0(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^4.8.6-beta.1
+    version: 4.8.6-beta.1(react-dom@18.2.0)(react@18.2.0)
   '@commercelayer/sdk':
     specifier: ^5.26.0
     version: 5.26.0
@@ -581,8 +581,8 @@ packages:
     dev: true
     optional: true
 
-  /@commercelayer/react-components@4.8.6-beta.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-aWsk+VTRPBSeUMV1zxFMIyb+0FJ7Ya/NFOjVi0lptRtQ+Jg7Z41D5NMup4SrPuT2i5vGzD0RispogQMIPeaf9Q==}
+  /@commercelayer/react-components@4.8.6-beta.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-DlpBusVodBEFbzy8itTjq32H2tYz00rCUYNNt+oV7/VY9sOz4QoBhKjI9d6MDCPm3YE1R6bhg6KGjWUYKs4bAA==}
     peerDependencies:
       react: ^18.0.0
     dependencies:
